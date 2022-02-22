@@ -1,6 +1,8 @@
 # fa19-bcs-060-6B-MAD_Lab-
-#Name Haseeb Ur Rehman fa19-bcs-060-6b (22/02/22)
-#JavaScript Introduction:
+
+--------------------------------
+# Name Haseeb Ur Rehman fa19-bcs-060-6b (22/02/22)
+# JavaScript Introduction:
 ##Problem 1:
 #Write program to print the kth digit from last. E.g. input 23617 and k=4 output 3. 
 ##Problem 2:
