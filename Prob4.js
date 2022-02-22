@@ -1,0 +1,5 @@
+console.log("Cubes and Squares");
+let num=[0,1,2,3,4,5,6,7,8,9,10];
+let sqr=num.map(a=>a*2);
+let cube=num.map(a=>a*3);
+console.log(sqr,cube);
