@@ -1,12 +1,12 @@
 # fa19-bcs-060-6B-MAD_Lab-
-Name Haseeb Ur Rehman fa19-bcs-060-6b (22/02/22)
-JavaScript Introduction:
-Problem 1:
-Write program to print the kth digit from last. E.g. input 23617 and k=4 output 3. 
-Problem 2:
+#Name Haseeb Ur Rehman fa19-bcs-060-6b (22/02/22)
+#JavaScript Introduction:
+##Problem 1:
+#Write program to print the kth digit from last. E.g. input 23617 and k=4 output 3. 
+##Problem 2:
 Write program to find sum of all digits. Input 23617 output 2+3+6+1+8=20
 (Hint: convert string to array and then use reduce function)
-Problem 3:
+##Problem 3:
 Write program to find sum of even digits. Input 23617 output 2+6=8.
 (Hint: Convert string to array and use map function)
 Problem 4:
