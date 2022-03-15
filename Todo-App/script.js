@@ -5,83 +5,120 @@ const classNames = {
   TODO_DELETE: "todo-delete",
 };
 
-
 const list = document.getElementById("todo-list");
 const itemCountSpan = document.getElementById("item-count");
 const uncheckedCountSpan = document.getElementById("unchecked-count");
-
-
-function createButton() {
-  var btn_cross = document.createElement("button")
-  btn_cross.innerHTML = "Remove"
-  
-  btn_cross.className = "item-delete-button"
-  btn_cross.onclick = removeTodo
-  return btn_cross
-}
-
-function createTextitem(item_name) {
-  var text = document.createElement("p")
-  text.innerHTML = item_name
-  return text
-}
-
-function createCheckbox() {
-  var checkbox = document.createElement('input');
-  checkbox.type = "checkbox";
-  checkbox.name = "name";
-  checkbox.value = "item_name"
-  checkbox.id = "item-checkbox";
-  checkbox.onclick = markAschecked
-  return checkbox
-}
-
-function createListitem(button, checkbox, p) {
-  var li = document.createElement("li");
-  li.appendChild(checkbox);
-  li.appendChild(p);
-  li.appendChild(button);
-  return li
-}
-
-function markAschecked() {
-  var text = ""
-  if (this.checked === true) {
-    text = this.parentNode.childNodes[1].innerHTML
-    this.parentNode.childNodes[1].innerHTML = ""
-    var del = document.createElement("del")
-    del.innerHTML = text
-    this.parentNode.childNodes[1].appendChild(del)
-    uncheckedCountSpan.innerHTML = uncheckedCountSpan.innerHTML * 1 - 1;
-  }
-  else {
-    text = this.parentNode.childNodes[1].childNodes[0].innerHTML;
-    this.parentNode.childNodes[1].childNodes[0].style.display = "none";
-    this.parentNode.childNodes[1].innerHTML = text
-    uncheckedCountSpan.innerHTML = uncheckedCountSpan.innerHTML * 1 + 1;
-  }
-}
+let inputValue=document.getElementById("input-item");
+var count=0;
+var check=0;
 
 function newTodo() {
-  // getting text from input
-  var item_name = document.getElementById("item-text").value
-  // creating button
-  var btn = createButton()
-  // creating checkbox
-  var checkbox = createCheckbox()
-  // creating text 
-  var p = createTextitem(item_name)
+  /*Add Logic for creating a new Todo Item. */
+  
+  /*Below lines can be used to updated the data on frontend */
+  if (inputValue.value==''){
+  
+    alert("Add items");
+    }
+  else{
+    var li=document.createElement('li');
 
-  var li = createListitem(btn, checkbox, p)
-  list.appendChild(li)
-  itemCountSpan.innerHTML = itemCountSpan.innerHTML * 1 + 1
-  uncheckedCountSpan.innerHTML = uncheckedCountSpan.innerHTML * 1 + 1;
-  document.getElementById("item-text").value = "";
+
+      var inp=document.createElement('input');
+      inp.type='checkbox';
+      inp.name='name';
+      inp.value='item_name';
+      inp.id='checkboxes';
+      inp.addEventListener('click',function(e){
+        // alert(e.target.checked);
+        if(e.target.checked){
+          check++;
+          uncheckedCountSpan.innerHTML =check;
+        }
+        else{
+        check--;
+          uncheckedCountSpan.innerHTML =check;
+        }
+      });
+      
+      
+      var labl=document.createElement('label');
+      labl.innerText=inputValue.value;
+      
+      var btn=document.createElement('button');
+      btn.innerText='delete';
+      // btn.onclick=singleRemove; 
+      btn.addEventListener('click',function(e){
+        // const res=e.target.parentNode;
+        // todos.removeChild(res);
+        // // alert(e.target.parentNode.);
+        // // e.target.parentNode.removeChild(e.target.parentNode.childNodes[0]);
+        // // e.target.parentNode.removeChild(e.target.parentNode.childNodes[1]);
+        // e.parentNode.parentNode.removeChild(e.parentNode);
+        // e.target.parentNode.childNodes[2].innerHTML=''  ;
+        // alert(a);
+        // this.removeChild(ab);
+        var text="";
+        // text = this.parentNode.childNodes[1].innerHTML
+        // this.parentNode.childNodes[1].innerHTML = ""
+        // var del = document.createElement("del")
+        // del.innerHTML = text
+        // this.parentNode.childNodes[1].appendChild(del)
+        // uncheckedCountSpan.innerHTML = uncheckedCountSpan.innerHTML * 1 - 1;
+        text = this.parentNode.childNodes[1].childNodes[0].innerHTML
+    this.parentNode.childNodes[1].childNodes[0].style.display = "none"
+    this.parentNode.childNodes[1].innerHTML = text
+    uncheckedCountSpan.innerHTML = uncheckedCountSpan.innerHTML * 1 + 1;
+      })
+
+      li.appendChild(inp);
+      li.appendChild(labl);
+      li.appendChild(btn);
+      list.appendChild(li);
+      // console.log(li);
+
+      // list.innerHTML +=`<li><input type="checkbox" name="name" value="item_name" id="checkBoxes" onClick="uncheckedCount(this)"><label> ${inputValue.value} </label>
+      // <button id="delete" onClick="removeTodo()">Delete</button></li>`;
+      count++;
+
+      itemCountSpan.innerHTML=count;
+  inputValue.value='';
+  } 
 }
+
+function uncheckedCount(){
+
+}
+
+
+
 
 
 function removeTodo() {
-  this.parentNode.style.display = "none"
-  itemCountSpan.innerHTML = itemCountSpan.innerHTML * 1 - 1
-  uncheckedCountSpan.innerHTML = uncheckedCountSpan.innerHTML * 1 - 1;
+  /*Add Logic for removing an existing TODO Item */
+  /*Below lines can be used to updated the data on frontend */
+  list.innerHTML = " ";
+  itemCountSpan.innerHTML = "";
+  uncheckedCountSpan.innerHTML = "";
+
+  // this.parentNode.style.display = "none"
+  // count--;
+  // // alert(this.parentNode);
+  // itemCountSpan.innerHTML = itemCountSpan.innerHTML =count;
+  //   uncheckedCountSpan.innerHTML = uncheckedCountSpan.innerHTML =count;
+    
+  //   this.document.querySelector('li').remove();
+  
+}
+function singleRemove(e) {
+  if (count <=0){
+    count=0;
+  }
+  else{
+
+    itemCountSpan.innerHTML = itemCountSpan.innerHTML =count;
+    uncheckedCountSpan.innerHTML = uncheckedCountSpan.innerHTML =count;
+    
+    e.document.querySelector('li').remove();
+  }
 }

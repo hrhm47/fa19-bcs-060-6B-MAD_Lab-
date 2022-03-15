@@ -64,34 +64,3 @@ ul {
 .todo-container:first-of-type {
   border-top: 1px solid #333;
 }
-
-.insert-item{
-  margin: 0 auto;
-}
-
-.todo-list li{
-  display: flex;
-  width: 40%;
-  justify-content: space-around;
-  align-items: center;
-}
-
-#item-checkbox{
-  border-radius: 10%;
-}
-
-.item-delete-button{
-  background-color: red;
-  color: white;
-  border-radius: 10px;
-  height: 35px;
-  border: none;
-  flex: 0.5;
-}
-
-.item-delete-button:hover{
-  background-color: rgba(255, 64, 58, 0.705);
-  transition: .2s;
-  cursor: pointer;
-}
-
